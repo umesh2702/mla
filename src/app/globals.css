@@ -1,31 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #101113;
-  --surface: #191B20;
-  --surface-elevated: #22252C;
-  --surface-border: #2D313A;
-  --foreground: #E8E2D7;
+  --background: #FFFCFD;
+  --surface: #FFFFFF;
+  --surface-warm: #FFF8F8;
+  --surface-blush: #FCE7F0;
+  --surface-rose: #F8D7E5;
   --accent: #D72B75;
   --accent-hover: #E34389;
-  --accent-subtle: rgba(215, 43, 117, 0.15);
-  --muted: #777B78;
-  --muted-foreground: #9EA39F;
-  --border: #262930;
+  --accent-deep: #A51D55;
+  --accent-subtle: rgba(215, 43, 117, 0.08);
+  --foreground: #24212A;
+  --muted: #77717B;
+  --muted-light: #9B959F;
+  --border: #F0E4EA;
+  --border-subtle: #F7EEF3;
 }
 
 @theme {
   --color-background: var(--background);
   --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-surface-border: var(--surface-border);
-  --color-foreground: var(--foreground);
+  --color-surface-warm: var(--surface-warm);
+  --color-surface-blush: var(--surface-blush);
+  --color-surface-rose: var(--surface-rose);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-deep: var(--accent-deep);
   --color-accent-subtle: var(--accent-subtle);
+  --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-light: var(--muted-light);
   --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
 
   --font-display: var(--font-syne), serif;
   --font-sans: var(--font-sans), sans-serif;
@@ -33,7 +39,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -49,23 +55,51 @@ h1, h2, h3, h4, .font-display {
   letter-spacing: -0.02em;
 }
 
-/* Custom scrollbar */
+/* Custom premium light scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #101113;
+  background: #FFF8F8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2D313A;
+  background: #F0E4EA;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #D72B75;
+}
+
+/* Gradient Utility Helpers */
+.bg-hero-gradient {
+  background: radial-gradient(circle at 75% 20%, #FCE7F0 0%, #FFF8F8 45%, #FFFCFD 80%);
+}
+
+.bg-blush-section {
+  background-color: #FFF8F8;
+}
+
+.bg-pink-pill {
+  background: linear-gradient(135deg, #D72B75 0%, #A51D55 100%);
+}
+
+.text-gradient-pink {
+  background: linear-gradient(135deg, #D72B75 0%, #A51D55 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Soft card shadow */
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(215, 43, 117, 0.06), 0 2px 6px -1px rgba(36, 33, 42, 0.04);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 12px 32px -4px rgba(215, 43, 117, 0.12), 0 4px 12px -2px rgba(36, 33, 42, 0.06);
 }
 
 /* Respect reduced motion */

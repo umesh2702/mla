@@ -50,7 +50,7 @@ export default async function LeaderProfilePage({
   }
 
   return (
-    <article className="min-h-screen bg-[#101113] text-[#E8E2D7]">
+    <article className="min-h-screen bg-[#FFFCFD] text-[#24212A]">
       {/* Profile Hero with key badges and stats */}
       <ProfileHero leader={leader} />
 

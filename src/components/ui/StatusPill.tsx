@@ -11,54 +11,54 @@ export default function StatusPill({ status, className = "" }: StatusPillProps) 
     case "completed":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-950/40 text-emerald-300 border border-emerald-800/50 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs ${className}`}
         >
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
           Completed
         </span>
       );
     case "in-progress":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-950/40 text-amber-300 border border-amber-800/50 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200/80 shadow-2xs ${className}`}
         >
-          <Clock className="w-3.5 h-3.5 text-amber-400" />
+          <Clock className="w-3.5 h-3.5 text-amber-600" />
           In Progress
         </span>
       );
     case "approved":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-950/40 text-blue-300 border border-blue-800/50 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-800 border border-sky-200/80 shadow-2xs ${className}`}
         >
-          <FileCheck className="w-3.5 h-3.5 text-blue-400" />
+          <FileCheck className="w-3.5 h-3.5 text-sky-600" />
           Approved / Sanctioned
         </span>
       );
     case "delayed":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-rose-950/40 text-rose-300 border border-rose-800/50 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200/80 shadow-2xs ${className}`}
         >
-          <AlertCircle className="w-3.5 h-3.5 text-rose-400" />
+          <AlertCircle className="w-3.5 h-3.5 text-rose-600" />
           Execution Delayed
         </span>
       );
     case "proposed":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-purple-950/40 text-purple-300 border border-purple-800/50 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-800 border border-purple-200/80 shadow-2xs ${className}`}
         >
-          <HelpCircle className="w-3.5 h-3.5 text-purple-400" />
+          <HelpCircle className="w-3.5 h-3.5 text-purple-600" />
           Proposed
         </span>
       );
     default:
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-zinc-900 text-zinc-400 border border-zinc-700 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-700 border border-zinc-200 shadow-2xs ${className}`}
         >
-          <HelpCircle className="w-3.5 h-3.5 text-zinc-400" />
+          <HelpCircle className="w-3.5 h-3.5 text-zinc-500" />
           Status Unclear
         </span>
       );

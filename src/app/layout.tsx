@@ -18,9 +18,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "BRS Leadership Platform | Independent Public Information Directory",
+  title: "BRS Leadership Platform | Civic Portfolio & Quthbullapur Dossier",
   description:
-    "An independent, source-backed public information platform profiling Bharat Rashtra Samithi (BRS) leadership, featuring Quthbullapur MLA K.P. Vivekanand.",
+    "An independent, source-grounded leadership directory profiling Bharat Rashtra Samithi (BRS) legislative leaders, featuring Quthbullapur MLA K.P. Vivekanand.",
   keywords: [
     "K.P. Vivekanand",
     "Quthbullapur MLA",
@@ -40,9 +40,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${plusJakartaSans.variable} dark h-full antialiased`}
+      className={`${syne.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#101113] text-[#E8E2D7] font-sans selection:bg-[#D72B75]/30 selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#FFFCFD] text-[#24212A] font-sans selection:bg-[#FCE7F0] selection:text-[#A51D55]">
         <DisclaimerBanner />
         <Header />
         <main className="flex-1">{children}</main>

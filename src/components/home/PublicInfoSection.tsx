@@ -23,16 +23,16 @@ export default function PublicInfoSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 border-b border-[#262930] bg-[#101113]">
+    <section className="py-16 sm:py-20 border-b border-[#F0E4EA] bg-[#FFFCFD]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
-          <span className="text-xs uppercase font-bold tracking-wider text-[#D72B75] mb-2 block">
+          <span className="text-xs uppercase font-extrabold tracking-wider text-[#A51D55] bg-[#FCE7F0] px-3 py-1 rounded-full mb-3 inline-block">
             Public Information Mission
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#E8E2D7]">
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
             Institutional Rigor in Civic Representation
           </h2>
-          <p className="text-sm sm:text-base text-[#9EA39F] mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#77717B] mt-3 leading-relaxed">
             Public trust in legislative representation demands empirical precision. Our platform replaces promotional hyperbole with verified government records, gazette notifications, and parliamentary proceedings.
           </p>
         </div>
@@ -43,15 +43,15 @@ export default function PublicInfoSection() {
             return (
               <div
                 key={i}
-                className="p-6 rounded-2xl bg-[#191B20] border border-[#2D313A] space-y-4 hover:border-[#777B78]/60 transition-colors"
+                className="p-8 rounded-3xl bg-white border border-[#F0E4EA] space-y-4 shadow-soft hover:shadow-card-hover transition-all"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#101113] border border-[#2D313A] flex items-center justify-center text-[#D72B75]">
-                  <Icon className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-2xl bg-[#FCE7F0] border border-[#F8D7E5] flex items-center justify-center text-[#A51D55] shadow-2xs">
+                  <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-[#E8E2D7]">
+                <h3 className="font-display text-lg font-bold text-[#24212A]">
                   {pillar.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#777B78] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#77717B] leading-relaxed">
                   {pillar.description}
                 </p>
               </div>

@@ -28,12 +28,12 @@ export default function LeaderPortrait({
     sm: "w-12 h-12 text-sm",
     md: "w-24 h-24 text-xl",
     lg: "w-36 h-36 md:w-44 md:h-44 text-2xl",
-    hero: "w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 text-4xl",
+    hero: "w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96 text-4xl",
   };
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-[#191B20] border border-[#2D313A] shadow-xl flex items-center justify-center shrink-0 select-none group ${sizeClasses[size]} ${className}`}
+      className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#FFF8F8] to-[#FCE7F0] border border-[#F0E4EA] shadow-soft flex items-center justify-center shrink-0 select-none group ${sizeClasses[size]} ${className}`}
     >
       {!hasError ? (
         <Image
@@ -41,24 +41,22 @@ export default function LeaderPortrait({
           alt={alt}
           fill
           priority={priority}
-          sizes="(max-width: 768px) 100vw, 400px"
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 500px"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-103"
           onError={() => setHasError(true)}
         />
-      ) : null}
-
-      {/* Graceful Fallback Portrait */}
-      {hasError && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#1E222A] via-[#16181C] to-[#101113] p-4 text-center">
-          <div className="w-16 h-16 rounded-full bg-[#D72B75]/10 border border-[#D72B75]/30 flex items-center justify-center mb-2 shadow-inner">
-            <span className="font-display font-bold text-[#E8E2D7] tracking-wider text-xl">
+      ) : (
+        /* Polished light fallback */
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#FFF8F8] via-[#FCE7F0] to-[#F8D7E5] p-4 text-center">
+          <div className="w-16 h-16 rounded-full bg-white border border-[#D72B75]/30 flex items-center justify-center mb-2 shadow-xs">
+            <span className="font-display font-bold text-[#A51D55] tracking-wider text-xl">
               {initials}
             </span>
           </div>
-          <span className="text-xs text-[#9EA39F] font-medium line-clamp-1 max-w-full px-2">
+          <span className="text-xs text-[#24212A] font-semibold line-clamp-1 max-w-full px-2">
             {name}
           </span>
-          <span className="text-[10px] text-[#777B78] uppercase tracking-wider mt-0.5">
+          <span className="text-[10px] text-[#A51D55] font-medium uppercase tracking-wider mt-0.5">
             BRS Leadership
           </span>
         </div>
