@@ -11,6 +11,15 @@ import PublicTimeline from "@/components/leaders/PublicTimeline";
 import ContactSection from "@/components/leaders/ContactSection";
 import SourcesSection from "@/components/leaders/SourcesSection";
 
+// Flagship Showcase Components for K.P. Vivekanand
+import DailyPrajaDarbarBanner from "@/components/leaders/DailyPrajaDarbarBanner";
+import DecadeOfTransformation from "@/components/leaders/DecadeOfTransformation";
+import InfrastructurePillars from "@/components/leaders/InfrastructurePillars";
+import YouthSkillsCorridor from "@/components/leaders/YouthSkillsCorridor";
+import EditorialQuoteSection from "@/components/leaders/EditorialQuoteSection";
+import GroundOutreachSection from "@/components/leaders/GroundOutreachSection";
+import PrajaDarbarGrievanceDesk from "@/components/leaders/PrajaDarbarGrievanceDesk";
+
 export async function generateStaticParams() {
   return LEADERS_DATA.map((leader) => ({
     slug: leader.slug,
@@ -49,18 +58,36 @@ export default async function LeaderProfilePage({
     notFound();
   }
 
+  const isKp = leader.slug === "kp-vivekanand";
+
   return (
     <article className="min-h-screen bg-[#FFFCFD] text-[#24212A]">
-      {/* Profile Hero with key badges and stats */}
+      {/* Flagship Daily Praja Darbar Banner */}
+      {isKp && <DailyPrajaDarbarBanner />}
+
+      {/* Profile Hero with authentic portrait, key badges, and stats */}
       <ProfileHero leader={leader} />
 
       {/* Sticky section sub-navigation */}
       <ProfileNav
         hasProjects={Boolean(leader.projects && leader.projects.length > 0)}
         hasConstituency={Boolean(leader.constituencyInfo)}
+        isFlagship={isKp}
       />
 
-      {/* Biography */}
+      {/* Flagship: Decade of Transformation (2014-2024) */}
+      {isKp && <DecadeOfTransformation />}
+
+      {/* Flagship: Major Infrastructure Pillars */}
+      {isKp && <InfrastructurePillars />}
+
+      {/* Flagship: Youth, Tech & Future Skills Corridor */}
+      {isKp && <YouthSkillsCorridor />}
+
+      {/* Flagship: High-Contrast Editorial Pull Quote & Safety Net */}
+      {isKp && <EditorialQuoteSection />}
+
+      {/* Biography & Public Career */}
       <BiographySection sections={leader.biography} />
 
       {/* Electoral Records */}
@@ -76,11 +103,19 @@ export default async function LeaderProfilePage({
         <DevelopmentProjects projects={leader.projects} />
       )}
 
-      {/* Legislative and Public Activity Timeline */}
-      <PublicTimeline timeline={leader.timeline} />
+      {/* Ground Outreach & Assembly Voice (Flagship) or General Public Timeline */}
+      {isKp ? (
+        <GroundOutreachSection />
+      ) : (
+        <PublicTimeline timeline={leader.timeline} />
+      )}
 
-      {/* Official Updates and Contact */}
-      <ContactSection contact={leader.contact} />
+      {/* Praja Darbar Grievance Desk (Flagship) or General Contact Section */}
+      {isKp ? (
+        <PrajaDarbarGrievanceDesk />
+      ) : (
+        <ContactSection contact={leader.contact} />
+      )}
 
       {/* References and Sources */}
       <SourcesSection sources={leader.sources} />

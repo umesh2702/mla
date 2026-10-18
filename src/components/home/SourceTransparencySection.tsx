@@ -15,7 +15,7 @@ export default function SourceTransparencySection() {
                 Source Grounding &amp; Verifiability
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A] mt-2">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A] mt-2">
               Audited Primary &amp; Statutory References
             </h2>
           </div>

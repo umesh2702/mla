@@ -15,7 +15,7 @@ export default function ContactSection({ contact }: ContactSectionProps) {
               Constituency Access &amp; Public Channels
             </span>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
             Official Public Representation Points
           </h2>
           <p className="text-xs text-[#77717B] mt-1 max-w-xl font-medium">

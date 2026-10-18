@@ -17,7 +17,7 @@ export default function DirectoryPage() {
             <span>&bull;</span>
             <span>Leadership Directory</span>
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#24212A] tracking-tight">
+          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#24212A] tracking-tight">
             Telangana Legislative Leadership Directory
           </h1>
           <p className="text-sm sm:text-base text-[#77717B] leading-relaxed">

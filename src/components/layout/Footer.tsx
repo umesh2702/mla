@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Scale, ExternalLink } from "lucide-react";
 
 export default function Footer() {
@@ -9,12 +10,16 @@ export default function Footer() {
           {/* Brand & Mission */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#D72B75] to-[#A51D55] flex items-center justify-center shadow-xs">
-                <span className="font-display font-black text-base text-white">
-                  BRS
-                </span>
+              <div className="relative h-10 w-16 overflow-hidden flex items-center justify-center">
+                <Image
+                  src="/images/brs-logo.jpg"
+                  alt="Bharat Rashtra Samithi (BRS) Emblem"
+                  width={120}
+                  height={70}
+                  className="h-10 w-auto object-contain"
+                />
               </div>
-              <span className="font-display font-bold text-lg text-[#24212A] tracking-tight">
+              <span className="font-display font-bold text-base sm:text-lg text-[#24212A] tracking-tight">
                 BRS Leadership Platform
               </span>
             </div>

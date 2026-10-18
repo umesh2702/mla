@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,73 +18,78 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[#F0E4EA] shadow-xs transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Identity */}
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[#F0E4EA] shadow-2xs transition-all">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        {/* Brand Identity with Authentic BRS Logo */}
         <Link
           href="/"
           id="brand-logo-link"
-          className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#D72B75] rounded-xl p-1"
+          className="flex items-center gap-3.5 group focus:outline-none focus:ring-2 focus:ring-[#D72B75] rounded-xl p-1 shrink-0"
         >
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#D72B75] to-[#A51D55] flex items-center justify-center shadow-md shadow-[#D72B75]/20 group-hover:scale-105 transition-transform">
-            <span className="font-display font-black text-xl text-white tracking-tight">
-              BRS
-            </span>
+          <div className="relative h-11 w-16 sm:w-20 overflow-hidden flex items-center justify-center">
+            <Image
+              src="/images/brs-logo.jpg"
+              alt="Bharat Rashtra Samithi (BRS) Emblem"
+              width={160}
+              height={94}
+              priority
+              className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="font-display font-extrabold text-base text-[#24212A] tracking-tight group-hover:text-[#D72B75] transition-colors">
-                LEADERSHIP PLATFORM
+              <span className="font-display font-bold text-base sm:text-lg text-[#24212A] tracking-tight group-hover:text-[#D72B75] transition-colors leading-none">
+                Leadership Platform
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FCE7F0] text-[#A51D55] border border-[#F8D7E5]">
+              <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FCE7F0] text-[#A51D55] border border-[#F8D7E5] hidden sm:inline-block">
                 Civic Portfolio
               </span>
             </div>
-            <span className="text-[11px] text-[#77717B] font-medium tracking-wide">
-              Verified Public Representation &amp; Legislative Records
+            <span className="text-[11px] text-[#77717B] font-normal tracking-normal pt-1 hidden md:block">
+              Public Records &bull; Telangana Legislative Dossier
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 text-sm font-medium" aria-label="Main Navigation">
+        <nav className="hidden lg:flex items-center gap-1.5 text-sm font-medium" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 rounded-xl transition-all ${
+                className={`relative px-3.5 py-2 rounded-xl transition-all whitespace-nowrap text-xs font-semibold ${
                   isActive
-                    ? "text-[#A51D55] bg-[#FCE7F0]/60 font-semibold shadow-xs"
+                    ? "text-[#A51D55] bg-[#FCE7F0]/70 font-semibold shadow-2xs"
                     : "text-[#77717B] hover:text-[#24212A] hover:bg-[#FFF8F8]"
                 }`}
               >
                 <span className="flex items-center gap-1.5">
                   {link.label}
                   {link.badge && (
-                    <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white">
+                    <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded-full bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white">
                       {link.badge}
                     </span>
                   )}
                 </span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#D72B75] rounded-full" />
+                  <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#D72B75] rounded-full" />
                 )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Desktop Prominent Pink CTA */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Desktop Flagship Profile CTA */}
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <Link
             href="/leaders/kp-vivekanand"
             id="header-flagship-cta"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white hover:opacity-95 transition-all shadow-md shadow-[#D72B75]/25 hover:shadow-lg hover:shadow-[#D72B75]/35 hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white hover:opacity-95 transition-all shadow-sm shadow-[#D72B75]/20 hover:shadow-md hover:shadow-[#D72B75]/30 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
           >
-            <span>View Flagship Profile</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <span>Explore Flagship Profile</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -91,7 +97,7 @@ export default function Header() {
         <div className="lg:hidden flex items-center gap-2">
           <Link
             href="/leaders/kp-vivekanand"
-            className="text-xs px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white font-semibold"
+            className="text-xs px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white font-semibold shadow-2xs"
           >
             KPV Profile
           </Link>
@@ -141,10 +147,10 @@ export default function Header() {
             <Link
               href="/leaders/kp-vivekanand"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white hover:opacity-95 shadow-md shadow-[#D72B75]/20"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white hover:opacity-95 shadow-md shadow-[#D72B75]/20"
             >
               <span>View Flagship Quthbullapur Profile</span>
-              <ChevronRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <div className="text-[11px] text-[#77717B] text-center pt-2">
               Independent Civic Research Prototype &bull; Not an Official Party Site

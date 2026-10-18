@@ -16,9 +16,9 @@ export default function NotFound() {
 
         <div className="space-y-2">
           <span className="text-xs uppercase font-extrabold tracking-wider text-[#A51D55] bg-[#FCE7F0] px-3 py-1 rounded-full">
-            404 &bull; Record Not Found
+            404 • Record Not Found
           </span>
-          <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A] pt-1">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A] pt-1">
             Dossier Not Found in Directory
           </h1>
           <p className="text-xs sm:text-sm text-[#77717B] leading-relaxed">

@@ -14,13 +14,13 @@ export default function FeaturedLeaderCard() {
               </span>
               <span className="text-xs text-[#77717B]">&bull; Detailed Electoral &amp; Civic Audit</span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
               K.P. Vivekanand Goud — MLA Quthbullapur
             </h2>
           </div>
           <Link
             href="/leaders/kp-vivekanand"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#D72B75] hover:text-[#A51D55] transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#D72B75] hover:text-[#A51D55] transition-colors"
           >
             <span>Explore Complete Dossier</span>
             <ArrowRight className="w-4 h-4" />
@@ -62,10 +62,10 @@ export default function FeaturedLeaderCard() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#A51D55] bg-[#FCE7F0] px-2.5 py-0.5 rounded-full">
                   Bharat Rashtra Samithi
                 </span>
-                <span className="text-[#77717B]">&bull;</span>
+                <span className="text-[#77717B]">•</span>
                 <span className="text-xs font-semibold text-[#24212A]">3-Term Incumbent MLA</span>
               </div>
-              <h3 className="font-display text-3xl font-extrabold text-[#24212A]">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
                 Koona Pandu Vivekanand Goud
               </h3>
               <p className="text-sm sm:text-base text-[#77717B] leading-relaxed">

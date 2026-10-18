@@ -17,7 +17,7 @@ export default function BiographySection({ sections }: BiographySectionProps) {
             <span className="text-xs font-bold uppercase tracking-wider text-[#A51D55]">
               Public Service &amp; Professional Career
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
               Biographical &amp; Political Trajectory
             </h2>
           </div>

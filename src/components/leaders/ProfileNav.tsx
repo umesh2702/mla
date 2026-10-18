@@ -1,32 +1,51 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { User, Award, MapPin, Building, Clock, Phone, BookOpen } from "lucide-react";
+import { User, Award, MapPin, Building, Clock, BookOpen, Activity, Compass, Sparkles, Building2 } from "lucide-react";
 
 interface ProfileNavProps {
   hasProjects?: boolean;
   hasConstituency?: boolean;
+  isFlagship?: boolean;
 }
 
-export default function ProfileNav({ hasProjects = true, hasConstituency = true }: ProfileNavProps) {
-  const [activeSection, setActiveSection] = useState<string>("biography");
+export default function ProfileNav({
+  hasProjects = true,
+  hasConstituency = true,
+  isFlagship = false,
+}: ProfileNavProps) {
+  const [activeSection, setActiveSection] = useState<string>(isFlagship ? "decade-transformation" : "biography");
 
-  const navItems = useMemo(
-    () => [
+  const navItems = useMemo(() => {
+    if (isFlagship) {
+      return [
+        { id: "decade-transformation", label: "2014-2024 Transformation", icon: Activity },
+        { id: "pillars", label: "Infrastructure Pillars", icon: Compass },
+        { id: "youth-skills", label: "Youth & Skills Corridor", icon: Sparkles },
+        { id: "biography", label: "Biography", icon: User },
+        { id: "elections", label: "Electoral Mandates", icon: Award },
+        { id: "constituency", label: "Quthbullapur Landscape", icon: MapPin },
+        { id: "projects", label: "Audited Projects", icon: Building },
+        { id: "assembly-voice", label: "Assembly & Outreach", icon: Clock },
+        { id: "grievance-desk", label: "Praja Darbar Desk", icon: Building2 },
+        { id: "sources", label: "Sources", icon: BookOpen },
+      ];
+    }
+
+    return [
       { id: "biography", label: "Biography", icon: User },
       { id: "elections", label: "Electoral Record", icon: Award },
       ...(hasConstituency ? [{ id: "constituency", label: "Constituency Context", icon: MapPin }] : []),
       ...(hasProjects ? [{ id: "projects", label: "Civic Projects", icon: Building }] : []),
       { id: "timeline", label: "Legislative Timeline", icon: Clock },
-      { id: "contact", label: "Public Offices", icon: Phone },
+      { id: "contact", label: "Public Offices", icon: Building2 },
       { id: "sources", label: "Audited Sources", icon: BookOpen },
-    ],
-    [hasProjects, hasConstituency]
-  );
+    ];
+  }, [hasProjects, hasConstituency, isFlagship]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 220;
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el) {

@@ -12,7 +12,7 @@ export default function DirectoryPreview() {
             <span className="text-xs uppercase font-extrabold tracking-wider text-[#A51D55] bg-[#FCE7F0] px-3 py-1 rounded-full mb-3 inline-block">
               Curated Leadership Roster
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
               Key BRS Representatives &amp; Legislative Leaders
             </h2>
           </div>

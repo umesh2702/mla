@@ -188,7 +188,7 @@ export default function LeaderDirectory() {
                     {leader.name}
                   </h3>
                   {leader.teluguName && (
-                    <p className="text-xs text-[#77717B] mt-0.5 font-sans">
+                    <p className="text-xs text-[#77717B] mt-0.5 font-telugu">
                       {leader.teluguName}
                     </p>
                   )}
@@ -204,7 +204,7 @@ export default function LeaderDirectory() {
                     <span className="font-semibold truncate">{leader.constituency}</span>
                     {leader.district && (
                       <span className="text-[11px] text-[#77717B] truncate">
-                        &bull; {leader.district}
+                        • {leader.district}
                       </span>
                     )}
                   </div>

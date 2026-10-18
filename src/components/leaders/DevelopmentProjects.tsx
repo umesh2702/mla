@@ -59,7 +59,7 @@ export default function DevelopmentProjects({ projects }: DevelopmentProjectsPro
                 Civic Works &amp; Infrastructure Oversight
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
               Audited Development Projects ({projects.length})
             </h2>
           </div>

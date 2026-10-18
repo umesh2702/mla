@@ -29,7 +29,7 @@ export default function PublicInfoSection() {
           <span className="text-xs uppercase font-extrabold tracking-wider text-[#A51D55] bg-[#FCE7F0] px-3 py-1 rounded-full mb-3 inline-block">
             Public Information Mission
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
             Institutional Rigor in Civic Representation
           </h2>
           <p className="text-sm sm:text-base text-[#77717B] mt-3 leading-relaxed">

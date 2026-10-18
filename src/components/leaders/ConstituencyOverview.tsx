@@ -15,7 +15,7 @@ export default function ConstituencyOverview({ info }: ConstituencyOverviewProps
               Territorial &amp; Administrative Dossier
             </span>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
             Constituency Landscape: {info.name}
           </h2>
         </div>

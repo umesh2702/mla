@@ -48,7 +48,7 @@ export default function PublicTimeline({ timeline }: PublicTimelineProps) {
               Documented Public Activity &amp; Floor Speeches
             </span>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
             Legislative &amp; Civic Timeline
           </h2>
           <p className="text-xs text-[#77717B] mt-1 max-w-xl font-medium">

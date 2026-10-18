@@ -17,7 +17,7 @@ export default function ElectoralTimeline({ elections }: ElectoralTimelineProps)
                 Election Commission of India Returns
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#24212A]">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#24212A]">
               Electoral Track Record &amp; Certified Mandates
             </h2>
           </div>
@@ -37,7 +37,7 @@ export default function ElectoralTimeline({ elections }: ElectoralTimelineProps)
                 {/* Year and Election Type */}
                 <div className="lg:col-span-3 space-y-1.5">
                   <div className="flex items-center gap-3">
-                    <span className="font-display text-4xl font-black text-[#24212A]">
+                    <span className="font-display text-3xl sm:text-4xl font-bold text-[#24212A]">
                       {election.year}
                     </span>
                     <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -84,7 +84,7 @@ export default function ElectoralTimeline({ elections }: ElectoralTimelineProps)
                     Runner-up: {election.runnerUpName}
                   </div>
                   <div className="text-[11px] text-[#77717B]">
-                    {election.runnerUpParty} &bull; {formatNumber(election.runnerUpVotes)} votes
+                    {election.runnerUpParty} • {formatNumber(election.runnerUpVotes)} votes
                   </div>
                 </div>
 

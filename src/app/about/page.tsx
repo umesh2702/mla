@@ -21,7 +21,7 @@ export default function AboutPage() {
             <span>&bull;</span>
             <span>Institutional Methodology</span>
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#24212A] tracking-tight">
+          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#24212A] tracking-tight">
             Research Integrity &amp; Statutory Disclosures
           </h1>
           <p className="text-sm sm:text-base text-[#77717B] leading-relaxed">
