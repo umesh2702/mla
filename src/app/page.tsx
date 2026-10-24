@@ -1,23 +1,12 @@
-import HeroSection from "@/components/home/HeroSection";
-import FeaturedLeaderCard from "@/components/home/FeaturedLeaderCard";
-import DirectoryPreview from "@/components/home/DirectoryPreview";
-import PublicInfoSection from "@/components/home/PublicInfoSection";
-import SourceTransparencySection from "@/components/home/SourceTransparencySection";
+import type { Metadata } from "next";
+import HomePageClient from "@/components/home/HomePageClient";
 
-export const metadata = {
-  title: "BRS Leadership Platform | Verified Civic Directory & Flagship Quthbullapur Dossier",
+export const metadata: Metadata = {
+  title: "BRS Graduate MLC Explorer 2027 | Telangana Legislative Council",
   description:
-    "An independent, source-grounded leadership directory profiling Bharat Rashtra Samithi (BRS) legislators, featuring an exhaustive civic dossier on Quthbullapur MLA K.P. Vivekanand.",
+    "An independent, source-grounded civic directory and interactive delimitation platform exploring the 2027 Telangana Graduate MLC elections, verified incumbent records, Form-18 registration pipeline, and BRS party leadership.",
 };
 
 export default function HomePage() {
-  return (
-    <div className="flex flex-col">
-      <HeroSection />
-      <FeaturedLeaderCard />
-      <DirectoryPreview />
-      <PublicInfoSection />
-      <SourceTransparencySection />
-    </div>
-  );
+  return <HomePageClient />;
 }

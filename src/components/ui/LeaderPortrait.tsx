@@ -57,7 +57,7 @@ export default function LeaderPortrait({
             {name}
           </span>
           <span className="text-[10px] text-[#A51D55] font-medium uppercase tracking-wider mt-0.5">
-            BRS Leadership
+            Telangana Leadership
           </span>
         </div>
       )}

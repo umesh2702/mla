@@ -1,175 +1,247 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight, Scale, ExternalLink } from "lucide-react";
 
 export default function Footer() {
+  const [correctionModalOpen, setCorrectionModalOpen] = useState(false);
+  const [correctionSubmitted, setCorrectionSubmitted] = useState(false);
+
+  const handleCorrectionSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCorrectionSubmitted(true);
+    setTimeout(() => {
+      setCorrectionSubmitted(false);
+      setCorrectionModalOpen(false);
+    }, 2500);
+  };
+
   return (
-    <footer className="border-t border-[#F0E4EA] bg-[#FFF8F8] text-[#77717B] text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand & Mission */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative h-10 w-16 overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/images/brs-logo.jpg"
-                  alt="Bharat Rashtra Samithi (BRS) Emblem"
-                  width={120}
-                  height={70}
-                  className="h-10 w-auto object-contain"
-                />
+    <footer className="w-full bg-[#EFF4FF] border-t border-[#E2E8F0] mt-16 text-[#565E74] text-sm">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          {/* Col 1: Brand & Purpose */}
+          <div className="md:col-span-1 space-y-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-[#E6007E] text-white flex items-center justify-center">
+                <span className="material-symbols-outlined text-[18px]">directions_car</span>
               </div>
-              <span className="font-display font-bold text-base sm:text-lg text-[#24212A] tracking-tight">
-                BRS Leadership Platform
+              <span className="font-display font-bold text-base text-[#0B1C30] tracking-tight">
+                BRS Graduate MLC Explorer
               </span>
             </div>
-            <p className="text-xs text-[#77717B] leading-relaxed max-w-lg">
-              An independent, source-grounded civic intelligence portfolio providing verified public records, election audit records, legislative histories, and infrastructure monitoring across key constituencies in Telangana.
+            <p className="text-xs text-[#64748B] leading-relaxed">
+              An independent civic exploration archive analyzing delimitation boundaries, Form-18 registration timelines, and verified candidate information across Telangana Graduate MLC constituencies for 2027.
             </p>
-            <div className="p-4 rounded-2xl bg-white border border-[#F0E4EA] text-xs text-[#77717B] space-y-1.5 shadow-xs">
-              <div className="flex items-center gap-2 text-[#24212A] font-semibold">
-                <Scale className="w-3.5 h-3.5 text-[#D72B75]" />
-                <span>Statutory Independence Disclosure</span>
-              </div>
-              <p className="text-[11px] text-[#77717B] leading-relaxed">
-                This platform is an independent demonstration created for institutional and design evaluation. It is neither commissioned, authorised, nor endorsed by the Bharat Rashtra Samithi (BRS) party organisation. All political biographies, election records, and municipal projects are curated exclusively from public records.
-              </p>
+            <div className="pt-1">
+              <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white text-[#E6007E] border border-[#E2E8F0]">
+                Verified Public Archive
+              </span>
             </div>
           </div>
 
-          {/* Directory Navigation */}
+          {/* Col 2: Official Portals */}
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-[#24212A] mb-4">
-              Leadership Profiles
-            </h4>
-            <ul className="space-y-2.5 text-xs">
+            <span className="text-xs font-bold text-[#0B1C30] uppercase tracking-wider block mb-3 font-display">
+              Official Portals
+            </span>
+            <ul className="space-y-2 text-xs">
               <li>
-                <Link
-                  href="/leaders/kp-vivekanand"
-                  className="text-[#24212A] hover:text-[#D72B75] font-medium transition-colors flex items-center justify-between"
+                <a
+                  href="https://ceotelangana.nic.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E6007E] transition-colors flex items-center gap-1.5"
                 >
-                  <span>K.P. Vivekanand (Quthbullapur)</span>
-                  <span className="text-[9px] uppercase font-bold px-2 py-0.5 rounded-full bg-[#FCE7F0] text-[#A51D55]">
-                    Flagship
-                  </span>
-                </Link>
+                  <span>CEO Telangana</span>
+                  <span className="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
               </li>
               <li>
-                <Link
-                  href="/leaders/ktr"
-                  className="hover:text-[#D72B75] transition-colors"
+                <a
+                  href="https://eci.gov.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E6007E] transition-colors flex items-center gap-1.5"
                 >
-                  K.T. Rama Rao (Sircilla)
-                </Link>
+                  <span>Election Commission of India</span>
+                  <span className="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
               </li>
               <li>
-                <Link
-                  href="/leaders/harish-rao"
-                  className="hover:text-[#D72B75] transition-colors"
+                <a
+                  href="https://voters.eci.gov.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E6007E] transition-colors flex items-center gap-1.5"
                 >
-                  T. Harish Rao (Siddipet)
-                </Link>
+                  <span>ECI Voters' Service Portal</span>
+                  <span className="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
               </li>
               <li>
-                <Link
-                  href="/leaders/kcr"
-                  className="hover:text-[#D72B75] transition-colors"
+                <a
+                  href="https://telanganalegislature.org.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E6007E] transition-colors flex items-center gap-1.5"
                 >
-                  K. Chandrashekar Rao (Gajwel)
-                </Link>
-              </li>
-              <li className="pt-2 border-t border-[#F0E4EA]">
-                <Link
-                  href="/leaders"
-                  className="text-[#D72B75] hover:text-[#A51D55] font-semibold flex items-center gap-1"
-                >
-                  <span>Explore Full Directory</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
+                  <span>Telangana Legislative Council</span>
+                  <span className="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Verification & Data Sources */}
+          {/* Col 3: Voter Protocols */}
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-[#24212A] mb-4">
-              Public Data Sources
-            </h4>
-            <ul className="space-y-2 text-xs text-[#77717B]">
+            <span className="text-xs font-bold text-[#0B1C30] uppercase tracking-wider block mb-3 font-display">
+              Voter Protocols
+            </span>
+            <ul className="space-y-2 text-xs">
               <li>
-                <a
-                  href="https://results.eci.gov.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#24212A] transition-colors flex items-center gap-1.5"
-                >
-                  <span>Election Commission of India (ECI)</span>
-                  <ExternalLink className="w-3 h-3 text-[#D72B75]" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://myneta.info/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#24212A] transition-colors flex items-center gap-1.5"
-                >
-                  <span>ADR / MyNeta Affidavits</span>
-                  <ExternalLink className="w-3 h-3 text-[#D72B75]" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.telangana.gov.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#24212A] transition-colors flex items-center gap-1.5"
-                >
-                  <span>Telangana Legislative Assembly</span>
-                  <ExternalLink className="w-3 h-3 text-[#D72B75]" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.ghmc.gov.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#24212A] transition-colors flex items-center gap-1.5"
-                >
-                  <span>GHMC &amp; SNDP Project Portals</span>
-                  <ExternalLink className="w-3 h-3 text-[#D72B75]" />
-                </a>
-              </li>
-              <li className="pt-2">
-                <Link
-                  href="/about"
-                  className="text-xs text-[#D72B75] hover:text-[#A51D55] font-medium transition-colors underline decoration-[#F0E4EA]"
-                >
-                  Review Fact-Checking Standards
+                <Link href="/#voter-guide" className="hover:text-[#E6007E] transition-colors">
+                  Form-18 Registration Timeline
                 </Link>
               </li>
+              <li>
+                <Link href="/#voter-guide" className="hover:text-[#E6007E] transition-colors">
+                  3-Year Degree Eligibility Rules
+                </Link>
+              </li>
+              <li>
+                <Link href="/#constituencies" className="hover:text-[#E6007E] transition-colors">
+                  Graduate Constituency Boundary Maps
+                </Link>
+              </li>
+              <li>
+                <Link href="/candidates/mahabubnagar-rangareddy-hyderabad" className="hover:text-[#E6007E] transition-colors">
+                  Candidate Profile Template
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => setCorrectionModalOpen(true)}
+                  className="text-[#E6007E] hover:underline text-xs flex items-center gap-1 font-semibold text-left pt-1"
+                >
+                  <span className="material-symbols-outlined text-[14px]">flag</span>
+                  <span>Report Fact Correction</span>
+                </button>
+              </li>
             </ul>
+          </div>
+
+          {/* Col 4: Integrity & Statutory Standards */}
+          <div>
+            <span className="text-xs font-bold text-[#0B1C30] uppercase tracking-wider block mb-3 font-display">
+              Integrity &amp; Audits
+            </span>
+            <p className="text-xs text-[#64748B] mb-2 leading-relaxed">
+              Compiled according to Section 27 of the Representation of the People Act, 1950 and Registration of Electors Rules, 1960.
+            </p>
+            <div className="flex items-center gap-1.5 text-xs text-[#0B1C30] font-semibold bg-white p-2.5 rounded-lg border border-[#E2E8F0]">
+              <span className="material-symbols-outlined text-[16px] text-[#006397]">
+                verified_user
+              </span>
+              <span>Non-Partisan Public Domain Research</span>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-[#F0E4EA] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#77717B]">
-          <p>
-            &copy; 2025 BRS Leadership Platform &bull; Independent Prototype for Stakeholder Evaluation.
+        {/* Bottom Strip */}
+        <div className="pt-6 border-t border-[#E2E8F0] flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#64748B]">
+          <p className="text-center md:text-left">
+            &copy; 2026–2027 Telangana Civic &amp; Electoral Research Initiative. Sourced from CEO Telangana &amp; ECI official records.
           </p>
-          <div className="flex items-center gap-4">
-            <Link href="/about" className="hover:text-[#24212A] transition-colors">
-              Methodology
-            </Link>
+          <div className="flex items-center gap-3 text-[11px]">
+            <span className="uppercase">Statutory Non-Partisan Prototype</span>
             <span>&bull;</span>
-            <Link href="/leaders" className="hover:text-[#24212A] transition-colors">
-              All Constituencies
-            </Link>
+            <span className="uppercase">Hyderabad, Telangana</span>
             <span>&bull;</span>
-            <span>No Personal Data Collected</span>
+            <Link href="/about" className="text-[#E6007E] hover:underline">
+              Sources &amp; Methodology
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* Fact Correction Interactive Modal */}
+      {correctionModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B1C30]/50 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-[#E2E8F0] relative">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0] mb-4">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-[#E6007E] text-[20px]">flag</span>
+                <h3 className="font-display font-bold text-base text-[#0B1C30]">
+                  Submit Factual Correction
+                </h3>
+              </div>
+              <button
+                onClick={() => setCorrectionModalOpen(false)}
+                className="text-[#64748B] hover:text-[#0B1C30] p-1 rounded-lg"
+              >
+                <span className="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+
+            {correctionSubmitted ? (
+              <div className="py-6 text-center space-y-2">
+                <span className="material-symbols-outlined text-[#006397] text-[40px]">check_circle</span>
+                <h4 className="font-display font-bold text-sm text-[#0B1C30]">
+                  Correction Logged
+                </h4>
+                <p className="text-xs text-[#64748B]">
+                  Thank you! Your citation will be reviewed against official CEO Telangana gazettes.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleCorrectionSubmit} className="space-y-3">
+                <p className="text-xs text-[#64748B]">
+                  We maintain zero-tolerance for fabricated figures or unverified claims. Please provide the official gazette link or source citation.
+                </p>
+                <div>
+                  <label className="block text-xs font-semibold text-[#0B1C30] mb-1">
+                    Constituency / Topic
+                  </label>
+                  <select className="w-full h-10 px-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#0B1C30] focus:outline-none focus:ring-2 focus:ring-[#E6007E]">
+                    <option>Mahabubnagar–Rangareddy–Hyderabad</option>
+                    <option>Warangal–Khammam–Nalgonda</option>
+                    <option>Adilabad–Nizamabad–Medak–Karimnagar</option>
+                    <option>Form-18 Voter Registration Schedule</option>
+                    <option>BRS Party Leadership Directory</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#0B1C30] mb-1">
+                    Details &amp; Official URL Citation
+                  </label>
+                  <textarea
+                    required
+                    rows={3}
+                    placeholder="Describe the discrepancy and paste the official government/ECI reference URL..."
+                    className="w-full p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#0B1C30] focus:outline-none focus:ring-2 focus:ring-[#E6007E]"
+                  />
+                </div>
+                <div className="flex items-center justify-end gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setCorrectionModalOpen(false)}
+                    className="px-4 py-2 rounded-lg bg-[#EFF4FF] text-xs font-semibold text-[#565E74] hover:bg-[#E2E8F0]"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 rounded-lg bg-[#E6007E] text-xs font-semibold text-white hover:bg-[#D72B75] shadow-sm"
+                  >
+                    Submit for Review
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

@@ -36,12 +36,12 @@ export async function generateMetadata({
 
   if (!leader) {
     return {
-      title: "Profile Not Found | BRS Leadership Platform",
+      title: "Profile Not Found | Telangana Leadership Explorer",
     };
   }
 
   return {
-    title: `${leader.name} | ${leader.currentRole} | BRS Leadership Dossier`,
+    title: `${leader.name} | ${leader.currentRole} | Telangana Leadership Explorer`,
     description: leader.shortBio,
   };
 }

@@ -15,7 +15,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -27,18 +27,27 @@ const notoSansTelugu = Noto_Sans_Telugu({
 });
 
 export const metadata: Metadata = {
-  title: "BRS Leadership Platform | Civic Information & Quthbullapur Dossier",
+  title: "BRS Graduate MLC Explorer 2027 | Telangana Legislative Council",
   description:
-    "An independent, source-grounded leadership directory profiling Bharat Rashtra Samithi (BRS) legislative leaders, featuring Quthbullapur MLA K.P. Vivekanand.",
+    "Independent public information platform exploring the 2027 Telangana Graduate MLC elections, constituency delimitation, Form-18 voter registration pipeline, and verified BRS party leadership records.",
   keywords: [
-    "K.P. Vivekanand",
-    "Quthbullapur MLA",
-    "BRS Leaders",
+    "Telangana Graduate MLC 2027",
+    "BRS Graduate MLC Explorer",
+    "Mahabubnagar Rangareddy Hyderabad Graduate MLC",
+    "Warangal Khammam Nalgonda Graduate MLC",
+    "Form 18 Voter Registration",
+    "CEO Telangana Graduate Voters",
+    "Telangana Legislative Council",
     "Bharat Rashtra Samithi",
-    "Telangana Assembly",
-    "KTR",
-    "Harish Rao",
   ],
+  authors: [{ name: "Telangana Civic & Electoral Research Initiative" }],
+  openGraph: {
+    title: "BRS Graduate MLC Explorer 2027 | Telangana Legislative Council",
+    description:
+      "Explore the 2027 Telangana Graduate MLC constituencies, statutory timelines, Form-18 guidelines, and verified BRS candidate announcements.",
+    type: "website",
+    locale: "en_IN",
+  },
 };
 
 export default function RootLayout({
@@ -51,10 +60,16 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakartaSans.variable} ${inter.variable} ${notoSansTelugu.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FFFCFD] text-[#24212A] font-sans selection:bg-[#FCE7F0] selection:text-[#A51D55]">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0B1C30] font-sans selection:bg-[#FFD9E2] selection:text-[#E6007E]">
         <DisclaimerBanner />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full">{children}</main>
         <Footer />
       </body>
     </html>

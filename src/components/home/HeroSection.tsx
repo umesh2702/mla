@@ -1,130 +1,187 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, MapPin, CheckCircle2 } from "lucide-react";
+import { MLC_CONSTITUENCIES } from "@/data/graduate-mlc";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onSearchSelect?: (constituencyId: string) => void;
+}
+
+export default function HeroSection({ onSearchSelect }: HeroSectionProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchFiltered, setSearchFiltered] = useState<typeof MLC_CONSTITUENCIES>([]);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchFiltered([]);
+      return;
+    }
+
+    const q = query.toLowerCase();
+    const matches = MLC_CONSTITUENCIES.filter((c) => {
+      const matchName = c.name.toLowerCase().includes(q);
+      const matchIncumbent = c.currentIncumbent.name.toLowerCase().includes(q);
+      const matchDistricts = c.districts.some((d) => d.toLowerCase().includes(q));
+      return matchName || matchIncumbent || matchDistricts;
+    });
+    setSearchFiltered(matches);
+  };
+
+  const handleSelect = (id: string) => {
+    if (onSearchSelect) {
+      onSearchSelect(id);
+    }
+    const mapSection = document.getElementById("constituencies");
+    if (mapSection) {
+      mapSection.scrollIntoView({ behavior: "smooth" });
+    }
+    setSearchQuery("");
+    setSearchFiltered([]);
+  };
+
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-20 border-b border-[#F0E4EA] bg-gradient-to-b from-[#FFF8F8] via-[#FFFCFD] to-[#FFFCFD]">
-      {/* Soft ambient blush radial glow */}
-      <div
-        className="absolute top-0 right-10 w-[500px] h-[450px] bg-radial from-[#FCE7F0]/60 via-[#FFF8F8]/30 to-transparent blur-3xl pointer-events-none rounded-full"
-        aria-hidden="true"
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Editorial Copy */}
-          <div className="lg:col-span-7 space-y-5">
-            {/* Editorial Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#F0E4EA] shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#D72B75]" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#A51D55]">
-                Telangana &bull; Leadership &bull; Public Records
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#24212A] tracking-tight leading-[1.2]">
-              Leadership,{" "}
-              <span className="bg-gradient-to-r from-[#D72B75] to-[#A51D55] bg-clip-text text-transparent">
-                public service
-              </span>{" "}
-              and the record behind it.
-            </h1>
-
-            {/* Concise Explanatory Copy */}
-            <p className="text-sm sm:text-base text-[#77717B] leading-relaxed max-w-xl font-normal">
-              An independent civic intelligence platform documenting the electoral mandates, legislative floor history, and infrastructure oversight of Bharat Rashtra Samithi (BRS) leadership—featuring a comprehensive public dossier on 3-term Quthbullapur MLA K.P. Vivekanand Goud.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <Link
-                href="/leaders"
-                id="hero-explore-leaders-cta"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs bg-gradient-to-r from-[#D72B75] to-[#A51D55] text-white hover:opacity-95 transition-all shadow-sm shadow-[#D72B75]/20 hover:shadow-md hover:shadow-[#D72B75]/30 hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span>Explore Leadership</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-
-              <Link
-                href="/leaders/kp-vivekanand"
-                id="hero-quthbullapur-cta"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs bg-white text-[#24212A] hover:bg-[#FFF8F8] border border-[#F0E4EA] hover:border-[#D72B75]/40 transition-all shadow-2xs hover:-translate-y-0.5"
-              >
-                <span>View Quthbullapur Profile</span>
-              </Link>
-            </div>
-
-            {/* Supporting Factual Metadata Strip */}
-            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-[#F0E4EA]">
-              <div>
-                <div className="font-display text-xl sm:text-2xl font-bold text-[#24212A]">85,576</div>
-                <div className="text-[11px] text-[#77717B] font-medium">Quthbullapur Margin (2023)</div>
-              </div>
-              <div>
-                <div className="font-display text-xl sm:text-2xl font-bold text-[#24212A]">3 Terms</div>
-                <div className="text-[11px] text-[#77717B] font-medium">Continuous MLA Record</div>
-              </div>
-              <div>
-                <div className="font-display text-xl sm:text-2xl font-bold text-[#D72B75]">46.8%</div>
-                <div className="text-[11px] text-[#77717B] font-medium">Vote Share (2023)</div>
-              </div>
-              <div>
-                <div className="font-display text-xl sm:text-2xl font-bold text-[#24212A]">ECI Audited</div>
-                <div className="text-[11px] text-[#77717B] font-medium">Official Form 20 Returns</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Clean Institutional Leader Portrait */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[380px]">
-              {/* Soft Pink Framing Ring */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-[#FCE7F0] via-[#FFF8F8] to-[#F8D7E5] rounded-[28px] opacity-90 shadow-soft" />
-
-              {/* Main Portrait Container */}
-              <div className="relative rounded-[24px] overflow-hidden bg-gradient-to-b from-[#FFF8F8] to-[#FCE7F0] border border-[#F0E4EA] aspect-[4/5] shadow-card-hover group">
-                <Image
-                  src="/images/leaders/kp-vivekanand.jpg"
-                  alt="Authentic portrait of K.P. Vivekanand Goud, MLA Quthbullapur"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-102"
-                />
-
-                {/* Top Corner Floating Tag */}
-                <div className="absolute top-3.5 right-3.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#F0E4EA] shadow-xs flex items-center gap-1.5">
-                  <MapPin className="w-3 h-3 text-[#D72B75]" />
-                  <span className="text-[11px] font-bold text-[#24212A]">Quthbullapur (131)</span>
-                </div>
-
-                {/* Bottom Floating Info Card */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#F0E4EA] shadow-soft space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#A51D55] bg-[#FCE7F0] px-2 py-0.5 rounded-full">
-                      Flagship Profile
-                    </span>
-                    <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                      ECI Verified
-                    </span>
-                  </div>
-                  <div className="font-display text-base font-bold text-[#24212A] pt-0.5">
-                    K.P. Vivekanand Goud
-                  </div>
-                  <div className="text-[11px] text-[#77717B] flex items-center justify-between">
-                    <span>MLA, Telangana Assembly</span>
-                    <strong className="text-[#D72B75] font-semibold">+85,576 Margin</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="w-full mb-12 sm:mb-16">
+      {/* Top Fact Chips Bar */}
+      <div className="flex flex-wrap items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFD9E2] text-[#3E001E] text-xs font-semibold shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[#E6007E] animate-pulse"></span>
+          <span>2 Current-Cycle Seats (Terms Expire 29 March 2027)</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EFF4FF] text-[#0B1C30] text-xs font-semibold shadow-xs border border-[#E2E8F0]">
+          <span className="material-symbols-outlined text-[16px] text-[#565E74]">domain</span>
+          <span>3 Statewide Graduate MLC Constituencies</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#D3E4FE] text-[#006397] text-xs font-semibold shadow-xs border border-[#DCE9FF]">
+          <span className="material-symbols-outlined text-[16px]">how_to_reg</span>
+          <span>Form-18 Fresh Enrolment Active</span>
+        </div>
+        <div className="ml-auto hidden xl:flex items-center gap-1.5 text-[#64748B] text-[11px] font-semibold uppercase tracking-wider">
+          <span className="material-symbols-outlined text-[16px] text-[#E6007E]">verified</span>
+          <span>Statutory ECI Rules • R.P. Act 1950 Sec 27</span>
         </div>
       </div>
-    </section>
+
+      {/* Hero Card with Clean Bento Visual Backdrop */}
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-6 sm:p-10 lg:p-12">
+        <div className="relative z-10 max-w-4xl">
+          {/* Category Pill */}
+          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-md bg-[#EFF4FF] border border-[#E2E8F0] text-[#0B1C30] text-xs font-bold uppercase tracking-wider font-display">
+            <span className="text-[#E6007E]">Telangana Legislative Council</span>
+            <span>•</span>
+            <span className="text-[#565E74]">Electoral Research Archive</span>
+          </div>
+
+          {/* Main Hero Headline */}
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-[#0B1C30] font-extrabold tracking-tight mb-4 leading-[1.12]">
+            Telangana Graduate MLC Elections{" "}
+            <span className="text-[#E6007E]">2027</span>
+          </h1>
+
+          {/* Lead Abstract */}
+          <p className="text-base sm:text-lg text-[#565E74] max-w-2xl mb-8 leading-relaxed font-sans">
+            Explore the Graduate MLC constituencies, current representatives, Form-18 voter registration pipeline, and verified BRS candidate announcement status across Telangana's dual-cycle legislative renewal.
+          </p>
+
+          {/* Multi-Field Search Bar with Dropdown */}
+          <div className="relative w-full max-w-2xl mb-8">
+            <div className="flex items-center w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl shadow-xs px-4 h-14 focus-within:ring-2 focus-within:ring-[#E6007E] focus-within:bg-white transition-all">
+              <span className="material-symbols-outlined text-[#565E74] text-[24px] mr-3 shrink-0">
+                search
+              </span>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+                placeholder="Search Graduate constituency, incumbent, or district (e.g. Hyderabad, Surabhi Vani Devi, Warangal)..."
+                className="w-full bg-transparent font-sans text-sm sm:text-base text-[#0B1C30] placeholder:text-[#64748B]/70 focus:outline-none"
+                id="heroConstituencySearchInput"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => handleSearch("")}
+                  className="text-[#64748B] hover:text-[#0B1C30] p-1"
+                >
+                  <span className="material-symbols-outlined text-[18px]">close</span>
+                </button>
+              )}
+              <div className="hidden sm:flex items-center gap-1 pl-2 shrink-0">
+                <kbd className="text-[10px] uppercase font-bold px-2 py-1 rounded bg-[#E2E8F0] text-[#565E74]">
+                  ESC
+                </kbd>
+                <kbd className="text-[10px] uppercase font-bold px-2 py-1 rounded bg-[#E2E8F0] text-[#565E74]">
+                  ↵
+                </kbd>
+              </div>
+            </div>
+
+            {/* Instant Search Results Dropdown */}
+            {searchFiltered.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-[#CBD5E1] z-30 p-2 space-y-1 max-h-72 overflow-y-auto">
+                <div className="px-3 py-1 text-[11px] font-bold text-[#64748B] uppercase tracking-wider">
+                  Matching Constituencies ({searchFiltered.length})
+                </div>
+                {searchFiltered.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleSelect(item.id)}
+                    className="w-full text-left p-3 rounded-lg hover:bg-[#EFF4FF] transition-colors flex items-center justify-between gap-3 group"
+                  >
+                    <div>
+                      <div className="font-display font-bold text-sm text-[#0B1C30] group-hover:text-[#E6007E]">
+                        {item.name}
+                      </div>
+                      <div className="text-xs text-[#565E74]">
+                        Incumbent: {item.currentIncumbent.name} ({item.currentIncumbent.party}) &bull; {item.districtsCount} Districts
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#FFD9E2] text-[#3E001E]">
+                      {item.isActive2027 ? "2027 Active" : "Future Cycle"}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <a
+              href="#constituencies"
+              className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#E6007E] text-white font-display text-sm font-bold hover:bg-[#D72B75] transition-all transform active:scale-95 shadow-sm shadow-[#E6007E]/20"
+            >
+              <span className="material-symbols-outlined text-[18px]">map</span>
+              <span>Explore Constituencies</span>
+            </a>
+            <a
+              href="#voter-guide"
+              className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#EFF4FF] text-[#0B1C30] font-display text-sm font-bold hover:bg-[#DCE9FF] transition-all border border-[#CBD5E1] active:scale-95"
+            >
+              <span className="material-symbols-outlined text-[18px] text-[#006397]">how_to_reg</span>
+              <span>Form-18 Voter Guide</span>
+            </a>
+            <a
+              href="#leadership"
+              className="inline-flex items-center gap-1.5 text-[#565E74] hover:text-[#E6007E] text-xs font-semibold transition-colors px-2 py-2"
+            >
+              <span>BRS Leadership</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Hero Visual Motif in Background */}
+        <div className="absolute right-0 bottom-0 pointer-events-none opacity-10 xl:opacity-15 translate-x-10 translate-y-10">
+          <svg fill="none" height="420" viewBox="0 0 100 100" width="420">
+            <circle cx="50" cy="50" r="46" stroke="#E6007E" strokeDasharray="4 4" strokeWidth="2" />
+            <circle cx="50" cy="50" r="34" stroke="#006397" strokeWidth="1.5" />
+            <path d="M50 10 L50 90 M10 50 L90 50" stroke="#E6007E" strokeWidth="1" />
+          </svg>
+        </div>
+      </div>
+    </div>
   );
 }
